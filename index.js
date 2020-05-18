@@ -28,10 +28,16 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * The difference between counter1 and counter2 is that counter1 can only variables available inside of it while counter2 can be accessed inside and outside of its function.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * Counter2 uses closure because it is able to access functions and variables from varying scopes.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * 
+ * Counter1 would be preferable if you were only using it once for an answer that doesn't need access from inside of the function. Counter2 would be better as a function that can be repeated for answers that increment.
+ * 
 */
 
 // counter1 code
@@ -56,11 +62,12 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  let score = 0;
+  return score + Math.round(Math.random() * 2);
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +83,18 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(callback, number){
+  let home = 0;
+  let away = 0;
+  for (let i=0; i< number; i++) {
+    home = home + callback();
+    away = away + callback();
+  return {
+    "Home": home 
+    "Away": away
+  };
 }
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
