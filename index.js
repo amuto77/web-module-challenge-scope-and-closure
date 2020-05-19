@@ -28,10 +28,16 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * The count for counter1 can only be accessed inside of the fuction and the count for counter2 can be accessed globally.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * Counter1 uses closure because it is able to access functions and variables from varying scopes.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ * 
+ * If you need to access the count from the global environment, counter2 would be preferable. Counter1 might be preferable if you have a lot of counts running (locally) without the variables interfering with each other in the global environment. 
+ * 
 */
 
 // counter1 code
@@ -56,11 +62,11 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random() * Math.floor(3));
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +82,19 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
-}
+function finalScore(callback, number){
+  let home = 0;
+  let away = 0;
+  for (let i=0; i< number; i++) {
+    home = home + callback();
+    away = away + callback();
+  }  
+  return( {
+      Home: home, 
+      Away: away
+    });
+}    
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -103,8 +117,18 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function scoreBoard(callback, number){
+  let home = 0;
+  let away = 0;
+  let scoreBoard = [];
+  for (let i=0; i< number; i++){
+    home = home + callback();
+    away = away + callback();
+    scoreBoard.push(`Inning ${i+1}:  ${home} - ${away}`)
+  }  
+  scoreBoard.push(`Final Score: ${home} - ${away}`)
+  return scoreBoard;
+}    
+console.log(scoreBoard(inning, 9));
 
 
