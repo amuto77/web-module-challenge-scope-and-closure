@@ -28,7 +28,7 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
- * The count for counter1 can only be accessed inside of the fuction and the count for counter2 can be accessed globally.
+ * The count for counter1 can only be accessed inside the scope of that function and the count for counter2 can be accessed globally.
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 

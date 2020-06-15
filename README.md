@@ -42,6 +42,8 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+Closures give us the ability to access functions from a parent level scope in a child level scope even after the parent function has been terminated.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +65,12 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
-b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+The closure is the function inside of the personalDice function on line 51. It is not accessible from the global environment.
+
+b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change? The similarity between the two is the string before the randomized number. The number afterwards changes with each new call of dansRoll. 
+
 c. What is the lexical scope of `newRoll`? 
+The lexical scope of newRoll is that of the parent function of personalDice. 'name' is the only variable available to newRoll.
 
 ### Task 3 - Stretch Goals
 
